@@ -1,0 +1,87 @@
+// src/assets/styles/mixins.scss
+
+@mixin article-theme($color-var, $bg-light-var, $gradient-var, $rgb) {
+  .article-header {
+    background: var($gradient-var);
+    border: 1px solid rgba($rgb, 0.2);
+    box-shadow: 0 4px 12px rgba($rgb, 0.1);
+
+    h1 {
+      color: var($color-var);
+    }
+  }
+
+  .table-of-contents {
+    background: var($bg-light-var);
+    border: 1px solid rgba($rgb, 0.2);
+
+    h2 {
+      color: var($color-var);
+      border-bottom-color: var($color-var);
+    }
+
+    li::before {
+      color: var($color-var);
+    }
+  }
+
+  .article-section {
+    h2 {
+      color: var($color-var);
+      border-left-color: var($color-var);
+      background: var($bg-light-var);
+    }
+
+    h3 {
+      border-left-color: var($color-var);
+      background: linear-gradient(to right, var($bg-light-var), transparent);
+    }
+  }
+
+  .note {
+    background: var($gradient-var);
+    border-left-color: var($color-var);
+    box-shadow: 0 3px 10px rgba($rgb, 0.15);
+
+    strong {
+      color: var($color-var);
+    }
+  }
+}
+
+
+// レスポンシブ用のミックスイン
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 769px) and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1025px) {
+    @content;
+  }
+}
+
+// ボタンスタイルのミックスイン
+@mixin button-style($bg-color, $text-color: white) {
+  background-color: var(#{$bg-color});
+  color: $text-color;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+}

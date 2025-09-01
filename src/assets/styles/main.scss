@@ -1,0 +1,1223 @@
+// 変数ファイルを最初にインポート
+@import './variables.scss';
+
+:root {
+    --python-color: #3776ab;
+    --c-color: #5C6BC0;
+    --cpp-color: #00897B;
+    --js-color: #f7df1e;
+    --matlab-color: #D95319;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+/* 基本的なコンテンツスタイル */
+h1 {
+    color: #333;
+    border-bottom: 3px solid #333;
+    padding-bottom: 10px;
+    margin-top: 60px;
+}
+
+h2 {
+    color: #333;
+    margin-top: 40px;
+    border-left: 4px solid #333;
+    padding-left: 10px;
+}
+
+h3 {
+    color: #555;
+    margin-top: 25px;
+}
+
+code {
+    background-color: #f0f0f0;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: 'Consolas', 'Monaco', monospace;
+}
+
+pre {
+    background-color: #282c34;
+    color: #abb2bf;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    line-height: 1.4;
+}
+
+.section {
+    background-color: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    scroll-margin-top: 80px;
+}
+
+.note {
+    background-color: #e8f4f8;
+    border-left: 4px solid #0076a8;
+    padding: 10px 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+.warning {
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 10px 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+/* テーブルスタイル */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* 上部ナビゲーションバー */
+.top-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.nav-brand {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.nav-brand .nav-link {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.nav-link.home {
+    background-color: transparent;
+    color: #333;
+}
+
+.nav-link.home:hover {
+    background-color: #2288ff;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+}
+
+.nav-link {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-link.matlab:hover, .nav-link.matlab.active {
+    background-color: var(--matlab-color);
+    color: white;
+}
+
+.nav-link.python:hover, .nav-link.python.active {
+    background-color: var(--python-color);
+    color: white;
+}
+
+.nav-link.c:hover, .nav-link.c.active {
+    background-color: var(--c-color);
+    color: white;
+}
+
+.nav-link.cpp:hover, .nav-link.cpp.active {
+    background-color: var(--cpp-color);
+    color: white;
+}
+
+.nav-link.js:hover, .nav-link.js.active {
+    background-color: #323330;
+    color: var(--js-color);
+}
+
+/* コンテンツラッパー */
+.content-wrapper {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 60px;
+}
+
+/* メインコンテンツ */
+.main-content {
+    flex: 1;
+    max-width: 900px;
+    padding: 20px;
+    margin-right: 300px;
+}
+
+/* 右側サイドバー（目次） */
+.sidebar-toc {
+    position: fixed;
+    right: calc((100% - 1400px) / 2);
+    top: 80px;
+    width: 280px;
+    max-height: calc(100vh - 100px);
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+.toc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #dee2e6;
+    position: sticky;
+    top: 0;
+    background-color: #f8f9fa;
+}
+
+.toc-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.toc-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+}
+
+.toc-nav {
+    padding: 15px 0;
+}
+
+.toc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.toc-item {
+    margin-bottom: 5px;
+}
+
+.toc-link {
+    display: block;
+    padding: 8px 20px;
+    text-decoration: none;
+    color: #666;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.toc-link:hover {
+    background-color: #e9ecef;
+    color: #333;
+}
+
+.toc-link.active {
+    background-color: #e7f3ff;
+    color: #0066cc;
+    border-left-color: #0066cc;
+    font-weight: 500;
+}
+
+.toc-sublist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-left: 20px;
+    display: none;
+}
+
+.toc-link.active + .toc-sublist {
+    display: block;
+}
+
+.toc-sublink {
+    display: block;
+    padding: 5px 20px;
+    text-decoration: none;
+    color: #999;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.toc-sublink:hover {
+    color: #666;
+    background-color: #f0f0f0;
+}
+
+/* モバイル用目次トグルボタン */
+.mobile-toc-toggle {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    z-index: 999;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 1200px) {
+    .sidebar-toc {
+        right: 20px;
+    }
+
+    .main-content {
+        margin-right: 320px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .main-content {
+        margin-right: 0;
+        max-width: 100%;
+    }
+
+    .sidebar-toc {
+        position: fixed;
+        right: -300px;
+        top: 60px;
+        height: 100vh;
+        transition: right 0.3s ease;
+        z-index: 999;
+        border-radius: 0;
+    }
+
+    .sidebar-toc.active {
+        right: 0;
+    }
+
+    .toc-toggle {
+        display: block;
+    }
+
+    .mobile-toc-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* オーバーレイ */
+    .sidebar-toc.active::before {
+        content: "";
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-brand {
+        font-size: 1rem;
+    }
+
+    .nav-links {
+        gap: 5px;
+    }
+
+    .nav-link {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+}
+
+/* スクロールスパイ用のスタイル */
+.toc-link {
+    position: relative;
+}
+
+.toc-link.in-view {
+    color: #0066cc;
+}
+
+/* スムーススクロール */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 言語固有のスタイル */
+.python h1 { color: #2b6cb0; border-bottom-color: #2b6cb0; }
+.python h2 { border-left-color: #2b6cb0; }
+.python .note { border-left-color: #2b6cb0; }
+
+.c h1 { color: #1a5490; border-bottom-color: #1a5490; }
+.c h2 { border-left-color: #1a5490; }
+.c .note { border-left-color: #1a5490; }
+
+.cpp h1 { color: #00599C; border-bottom-color: #00599C; }
+.cpp h2 { border-left-color: #00599C; }
+.cpp .note { border-left-color: #00599C; }
+
+.js h1 { color: #f7df1e; background-color: #323330; padding: 15px; border-radius: 5px; margin-bottom: 30px; border: none; }
+.js h2 { border-left-color: #f7df1e; }
+.js .note { background-color: #fffbdd; border-left-color: #f7df1e; }
+
+.matlab h1 { color: #0076a8; border-bottom-color: #0076a8; }
+.matlab h2 { border-left-color: #0076a8; }
+.matlab .note { border-left-color: #0076a8; }
+
+/* index.html固有のスタイル */
+body.index {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+}
+
+body.index .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+body.index h1 {
+    font-size: 2.5em;
+    text-align: center;
+    margin: 40px 0;
+    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+body.index h2 {
+    font-size: 2em;
+    text-align: center;
+    color: #34495e;
+    margin: 30px 0;
+}
+
+body.index h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+body.index .languages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+body.index .language-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+body.index .language-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+}
+
+body.index .language-card:hover::before {
+    transform: translateX(100%);
+}
+
+body.index .language-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px 0 rgba(31, 38, 135, 0.5);
+}
+
+body.index .language-card h3 {
+    color: #2980b9;
+    margin-bottom: 10px;
+    font-size: 1.8em;
+}
+
+body.index .language-card h4 {
+    color: #7f8c8d;
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+body.index .language-card p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+body.index .language-card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+body.index .language-card li {
+    padding: 5px 0;
+    padding-left: 20px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+body.index .language-card:hover li {
+    transform: translateX(5px);
+}
+
+body.index .language-card li:before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: #3498db;
+    transition: transform 0.3s ease;
+}
+
+body.index .language-card:hover li:before {
+    transform: translateX(5px);
+}
+
+body.index .cta-button {
+    display: inline-block;
+    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+body.index .cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255,255,255,0.3) 0%, transparent 100%);
+    transition: left 0.5s ease;
+}
+
+body.index .cta-button:hover::before {
+    left: 100%;
+}
+
+body.index .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+body.index .features {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    margin: 40px 0;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+body.index .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+body.index .feature-item {
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+body.index .feature-item:hover {
+    transform: translateY(-5px);
+}
+
+body.index .feature-item h3 {
+    color: #667eea;
+    margin-bottom: 10px;
+}
+
+body.index .learning-tips {
+    background: rgba(236, 240, 241, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    margin: 40px 0;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+}
+
+body.index .tip-item {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border-left: 4px solid #e74c3c;
+}
+
+body.index .tip-item:hover {
+    transform: translateX(10px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+body.index .tip-item h3 {
+    color: #e74c3c;
+    margin-bottom: 10px;
+}
+
+/* パーティクルアニメーション用のスタイル */
+body.index .particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* 言語ごとのテーマカラー */
+body.index .language-card.python { --theme-color: #3776ab; }
+body.index .language-card.c { --theme-color: #5C6BC0; }
+body.index .language-card.cpp { --theme-color: #00897B; }
+body.index .language-card.javascript { --theme-color: #f7df1e; }
+body.index .language-card.matlab { --theme-color: #D95319; }
+
+/* ロゴアイコン */
+body.index .language-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 3em;
+    opacity: 0.1;
+    transition: all 0.3s ease;
+}
+
+body.index .language-card:hover .language-icon {
+    opacity: 0.2;
+    transform: rotate(15deg) scale(1.1);
+}
+
+/* 目次のスタイル */
+.table-of-contents {
+    background-color: #f8f9fa;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+}
+
+.table-of-contents h2 {
+    margin-top: 0;
+    border: none;
+    padding: 0;
+}
+
+.table-of-contents ol {
+    margin-left: 20px;
+}
+
+.table-of-contents ul {
+    margin-left: 20px;
+    list-style-type: disc;
+}
+
+.table-of-contents a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.table-of-contents a:hover {
+    text-decoration: underline;
+}
+
+/* 2025/0729 新規追加 */
+/* 言語別インデックスページ専用スタイル（既存スタイルの後に追加） */
+
+/* ヘッダーセクションの拡張 */
+.matlab_index .header-section,
+.python_index .header-section,
+.c_index .header-section,
+.cpp_index .header-section,
+.js_index .header-section {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.matlab_index .header-section h1,
+.python_index .header-section h1,
+.c_index .header-section h1,
+.cpp_index .header-section h1,
+.js_index .header-section h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    border: none;
+    padding: 0;
+}
+
+/* 各言語のヘッダーカラー */
+.matlab_index .header-section h1 { color: var(--matlab-color); }
+.python_index .header-section h1 { color: var(--python-color); }
+.c_index .header-section h1 { color: var(--c-color); }
+.cpp_index .header-section h1 { color: var(--cpp-color); }
+.js_index .header-section h1 {
+    color: var(--js-color);
+    background-color: #323330;
+    padding: 15px 30px;
+    border-radius: 5px;
+}
+
+.header-section .subtitle {
+    font-size: 1.3rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.header-section .description {
+    max-width: 800px;
+    margin: 0 auto;
+    color: #555;
+    line-height: 1.8;
+}
+
+/* カテゴリセクションの改善 */
+.category-section {
+    margin-bottom: 50px;
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.category-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: white;
+    font-size: 1.5rem;
+}
+
+/* 各言語のカテゴリアイコンカラー */
+.matlab_index .category-icon { background-color: var(--matlab-color); }
+.python_index .category-icon { background-color: var(--python-color); }
+.c_index .category-icon { background-color: var(--c-color); }
+.cpp_index .category-icon { background-color: var(--cpp-color); }
+.js_index .category-icon { background-color: #323330; }
+
+.category-title {
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: 600;
+    margin: 0;
+    border: none;
+    padding: 0;
+}
+
+.category-description {
+    color: #666;
+    margin-left: 55px;
+    margin-bottom: 25px;
+}
+
+/* 記事カードの改善 */
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.article-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    cursor: default;
+    border: none;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.article-card-header {
+    padding: 20px;
+    color: white;
+}
+
+/* 各言語の記事カードヘッダーカラー */
+.matlab_index .article-card-header {
+    background: linear-gradient(135deg, var(--matlab-color) 0%, #E67E50 100%);
+}
+
+.python_index .article-card-header {
+    background: linear-gradient(135deg, var(--python-color) 0%, #4a90e2 100%);
+}
+
+.c_index .article-card-header {
+    background: linear-gradient(135deg, var(--c-color) 0%, #7986CB 100%);
+}
+
+.cpp_index .article-card-header {
+    background: linear-gradient(135deg, var(--cpp-color) 0%, #00A896 100%);
+}
+
+.js_index .article-card-header {
+    background: linear-gradient(135deg, #323330 0%, #4a4a4a 100%);
+}
+
+.article-card-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.article-card-subtitle {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    color: white;
+}
+
+.article-card-body {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.article-card-description {
+    color: #666;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.tag {
+    background-color: #f0f0f0;
+    color: #555;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+}
+
+.tag.difficulty-beginner {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.tag.difficulty-intermediate {
+    background-color: #fff3e0;
+    color: #ef6c00;
+}
+
+.tag.difficulty-advanced {
+    background-color: #fce4ec;
+    color: #c2185b;
+}
+
+/* 記事リンクボタンの改善 */
+.article-card .article-link {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-align: center;
+    color: white;
+}
+
+/* 各言語の記事リンクカラー */
+.matlab_index .article-link { background-color: var(--matlab-color); }
+.python_index .article-link { background-color: var(--python-color); }
+.c_index .article-link { background-color: var(--c-color); }
+.cpp_index .article-link { background-color: var(--cpp-color); }
+.js_index .article-link {
+    background-color: #323330;
+    color: var(--js-color);
+}
+
+.article-link:hover {
+    transform: translateX(5px);
+}
+
+.matlab_index .article-link:hover { background-color: #B84527; }
+.python_index .article-link:hover { background-color: #2b5a8a; }
+.c_index .article-link:hover { background-color: #4a5aa0; }
+.cpp_index .article-link:hover { background-color: #00695C; }
+.js_index .article-link:hover { background-color: #1a1a1a; }
+
+/* Coming Soonカードの改善 */
+.coming-soon-card {
+    background: #f8f9fa;
+    border: 2px dashed #ddd;
+    opacity: 0.7;
+}
+
+.coming-soon-card .article-card-header {
+    background: #e0e0e0;
+    color: #999;
+}
+
+.coming-soon-card .article-link {
+    background-color: #ccc;
+    cursor: not-allowed;
+    pointer-events: none;
+    color: #999;
+}
+
+/* クイックリンクセクション */
+.quick-links {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    margin-top: 50px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+}
+
+.quick-links h2 {
+    margin-bottom: 20px;
+    border: none;
+    padding: 0;
+}
+
+/* 各言語のクイックリンクヘッダーカラー */
+.matlab_index .quick-links h2 { color: var(--matlab-color); }
+.python_index .quick-links h2 { color: var(--python-color); }
+.c_index .quick-links h2 { color: var(--c-color); }
+.cpp_index .quick-links h2 { color: var(--cpp-color); }
+.js_index .quick-links h2 { color: #323330; }
+
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.quick-link-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.quick-link-item:hover {
+    background-color: #f5f5f5;
+}
+
+.quick-link-item a {
+    color: #555;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.quick-link-item .icon {
+    margin-right: 10px;
+}
+
+/* 各言語のアイコンカラー */
+.matlab_index .quick-link-item .icon { color: var(--matlab-color); }
+.python_index .quick-link-item .icon { color: var(--python-color); }
+.c_index .quick-link-item .icon { color: var(--c-color); }
+.cpp_index .quick-link-item .icon { color: var(--cpp-color); }
+.js_index .quick-link-item .icon { color: #323330; }
+
+/* コンテナの最大幅調整 */
+.matlab_index .container,
+.python_index .container,
+.c_index .container,
+.cpp_index .container,
+.js_index .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px 40px;
+}
+
+
+// 2025/0803 新規追加
+// Prism.jsテーマのカスタマイズ
+/* コードブロック全体の背景を濃くする */
+pre[class*="language-"] {
+  background: #1a1b26 !important;  /* 濃い紺色 */
+  color: #a9b1d6 !important;      /* 明るいグレー */
+  border: 1px solid #2a2b3d;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  padding: 1.5em !important;
+}
+
+/* コード要素の背景も統一 */
+pre[class*="language-"] code {
+  background: transparent !important;
+  color: inherit !important;
+}
+
+/* すべてのトークンの背景を明示的に透明に */
+.token {
+  background: transparent !important;
+}
+
+.language-c {
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: #6b7280;
+    font-style: italic;
+  }
+
+  .token.punctuation {
+    color: #a1a1aa;
+  }
+
+  .token.property,
+  .token.tag,
+  .token.boolean,
+  .token.number,
+  .token.constant,
+  .token.symbol,
+  .token.deleted {
+    color: #ef4444;
+  }
+
+  .token.selector,
+  .token.attr-name,
+  .token.string,
+  .token.char,
+  .token.builtin,
+  .token.inserted {
+    color: #10b981;
+  }
+
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string {
+    color: #f59e0b;
+  }
+
+  .token.atrule,
+  .token.attr-value,
+  .token.keyword {
+    color: #3b82f6;
+  }
+
+  .token.function,
+  .token.class-name {
+    color: #8b5cf6;
+  }
+
+  .token.regex,
+  .token.important,
+  .token.variable {
+    color: #f59e0b;
+  }
+
+  .token.important,
+  .token.bold {
+    font-weight: bold;
+  }
+
+  .token.italic {
+    font-style: italic;
+  }
+
+  .token.entity {
+    cursor: help;
+  }
+}
+
+// スクロールバーのカスタマイズ
+pre::-webkit-scrollbar {
+  height: 8px;
+}
+
+pre::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+pre::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+
+
+/* 記事コンテナのグローバルスタイル */
+.article-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 80px 20px 40px;
+  display: flex;
+  gap: 40px;
+  position: relative;
+
+  /* デスクトップ: 横並び */
+  @media (min-width: 1025px) {
+    flex-direction: row;
+    justify-content: space-between;
+
+    .article-content {
+      flex: 1 1 70%;
+      max-width: 70%;
+    }
+
+    .sidebar-toc {
+      flex: 1 1 25%;
+      max-width: 25%;
+      position: sticky;
+      top: 100px;  /* ナビゲーションの下に配置 */
+      height: fit-content;
+      overflow-y: auto;
+      z-index: 10;
+    }
+  }
+
+  /* 中間サイズ: 縦並び */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    flex-direction: column;
+
+    .sidebar-toc {
+      position: relative;
+      max-width: 100%;
+      margin-top: 40px;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+  }
+
+  /* モバイル: 縦並び、サイドバーはトグルでオーバーレイ */
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding-bottom: 80px;  /* トグルボタン分の余白 */
+
+    .sidebar-toc {
+      display: none;  /* デフォルト非表示 */
+
+      &.active {
+        display: block;
+      }
+    }
+  }
+}
+
+/* トグルボタンのグローバル調整 */
+.mobile-toc-toggle {
+  z-index: 2000;  /* 最前面 */
+}
+
+/* スクロール時の重なり防止 */
+body {
+  overflow-x: hidden;  /* 横スクロールを防ぐ */
+}

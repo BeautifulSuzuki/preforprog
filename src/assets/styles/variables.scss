@@ -1,0 +1,48 @@
+// カラー変数
+:root {
+  --python-color: #3776ab;
+  --c-color: #5C6BC0;
+  --cpp-color: #00897B;
+  --js-color: #f7df1e;
+  --matlab-color: #D95319;
+
+  // 各言語のプライマリカラー
+  --primary-color: var(--python-color);
+  --primary-color-dark: #2b5a8a;
+  --secondary-color: #4a90e2;
+}
+
+// Python用のカラー設定
+.python {
+  --primary-color: var(--python-color);
+  --primary-color-dark: #2b5a8a;
+  --secondary-color: #4a90e2;
+}
+
+// C言語用のカラー設定
+.c {
+  --primary-color: var(--c-color);
+  --primary-color-dark: #4a5aa0;
+  --secondary-color: #7986CB;
+}
+
+// C++用のカラー設定
+.cpp {
+  --primary-color: var(--cpp-color);
+  --primary-color-dark: #00695C;
+  --secondary-color: #00A896;
+}
+
+// JavaScript用のカラー設定
+.js {
+  --primary-color: #323330;
+  --primary-color-dark: #1a1a1a;
+  --secondary-color: #4a4a4a;
+}
+
+// MATLAB用のカラー設定
+.matlab {
+  --primary-color: var(--matlab-color);
+  --primary-color-dark: #B84527;
+  --secondary-color: #E67E50;
+}
